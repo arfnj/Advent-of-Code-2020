@@ -62,9 +62,9 @@ for policy in policies:
     if letter_count >= policy['low'] and letter_count <= policy['high']:
         valid_1 += 1
     validator = 0
-    validator = validator + 1 if policy['low'] in letter_positions else validator
-    validator = validator + 1 if policy['high'] in letter_positions else validator
-    valid_2 = valid_2 + 1 if validator == 1 else valid_2
+    validator += 1 if policy['low'] in letter_positions else 0
+    validator += 1 if policy['high'] in letter_positions else val0idator
+    valid_2 += 1 if validator == 1 else 0
 
 print(f"Part one answer: {valid_1}")
 
