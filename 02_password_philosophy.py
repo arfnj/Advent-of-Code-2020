@@ -38,32 +38,22 @@ def translate_policies(policy):
         'low': int(elements[0][0]),
         'high': int(elements[0][1]),
         'letter': elements[1][0],
-        'password': elements[2]
+        'password': elements[2],
+        'count': elements[2].count(elements[1][0])
     }
 
 policies = list(map(translate_policies, clean))
-
-def make_letter_map(password):
-    letter_map = {}
-    for char in range(len(password)):
-        if password[char] in letter_map:
-            letter_map[password[char]][0] += 1
-            letter_map[password[char]][1].add(char + 1)
-        else:
-            letter_map[password[char]] = [1, set({char + 1})]
-    return letter_map
 
 valid_1 = 0
 valid_2 = 0
 
 for policy in policies:
     letter_map = make_letter_map(policy['password'])
-    letter_count, letter_positions = letter_map.get(policy['letter'], [0, {}])
-    if letter_count >= policy['low'] and letter_count <= policy['high']:
+    if policy['count'] >= policy['low'] and policy['count'] <= policy['high']:
         valid_1 += 1
     validator = 0
-    validator += 1 if policy['low'] in letter_positions else 0
-    validator += 1 if policy['high'] in letter_positions else val0idator
+    validator += 1 if policy['password'][policy['low'] - 1] == policy['letter'] else 0
+    validator += 1 if policy['password'][policy['high'] - 1] == policy['letter'] else 0
     valid_2 += 1 if validator == 1 else 0
 
 print(f"Part one answer: {valid_1}")
