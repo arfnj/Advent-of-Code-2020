@@ -48,7 +48,6 @@ valid_1 = 0
 valid_2 = 0
 
 for policy in policies:
-    letter_map = make_letter_map(policy['password'])
     if policy['count'] >= policy['low'] and policy['count'] <= policy['high']:
         valid_1 += 1
     validator = 0
