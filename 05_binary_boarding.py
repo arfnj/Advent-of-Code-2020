@@ -38,7 +38,7 @@ BBFFBBFRLL: row 102, column 4, seat ID 820.
 As a sanity check, look through your list of boarding passes. What is the highest seat ID on a boarding pass?
 """
 
-from input import raw
+from input05 import raw
 
 boarding_passes = [(bp[0:7], bp[7:]) for bp in raw.split('\n')]
 highest_seat_id = 0
